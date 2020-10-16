@@ -151,7 +151,7 @@ class PlacesInput extends Component {
         const places = await fetch(
           `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${
             this.state.query
-          }&key=${this.props.googleApiKey}&inputtype=textquery&language=${
+          }&location=14.6091,121.0223&radius=10000&strictbounds&key=${this.props.googleApiKey}&inputtype=textquery&language=${
             this.props.language
           }&fields=${
             this.props.queryFields
@@ -174,7 +174,7 @@ class PlacesInput extends Component {
     }, async () => {
       try {
         const place = await fetch(
-          `https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&key=${this.props.googleApiKey}&fields=${this.props.queryFields}&language=${this.props.language}${this.buildSessionQuery()}`
+          `https://maps.googleapis.com/maps/api/place/details/json?placeid=${id}&location=14.6091,121.0223&radius=10000&strictbounds&key=${this.props.googleApiKey}&fields=${this.props.queryFields}&language=${this.props.language}${this.buildSessionQuery()}`
         ).then(response => response.json());
 
         return this.setState(
